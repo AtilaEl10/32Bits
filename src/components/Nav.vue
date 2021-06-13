@@ -15,10 +15,10 @@
                         <router-link class="nav-link" to="/busqueda">Busqueda</router-link>                    
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/">Inicio</router-link>                    
+                        <router-link class="nav-link" to="/ventas">Ventas</router-link>                    
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/">Total</router-link>                    
+                        <router-link class="nav-link" to="/total">Total</router-link>                    
                     </li>
                 </ul>
                 </div>

@@ -63,11 +63,22 @@ export default new Vuex.Store({
       if(!juegos) return 0;
       const cantidad = juegos.length
       return cantidad
+    },
+    juegosStock(state) {
+      const stock = state.juegos
+      if(!stock) return
+      const stockfilt = stock.filter(fil => fil.stock > 0)
+      if (!stockfilt) return 0 
+
+      return stockfilt.length
     }
   },
   mutations: {
     añadirPalabra(state, payload) {
       state.filtroCodigo = payload
+    },
+    quitarStock(state,payload) {
+      state.juegos.stock = payload--
     }
   },
   actions: {},

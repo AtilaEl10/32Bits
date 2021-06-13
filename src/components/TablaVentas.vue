@@ -9,17 +9,18 @@
                     <th>Precio</th>                
                 </tr>
             </thead>
-            <tbody v-if="juegosFiltrados && juegosFiltrados.length === 0">
+            <tbody v-if="juegosConStock && juegosConStock.length === 0">
                 <tr class="text-center">
                     <td colspan="4" class="py-4 display-5">No hay Stock de juegos disponibles</td>
                 </tr>
             </tbody>
             <tbody v-else>
-                <tr scope="row" v-for="(juegos, i) in juegosFiltrados" :key="i" :style="{'background-color': juegos.color}">
+                <tr scope="row" v-for="(juegos, i) in juegosConStock" :key="i">
                     <td> {{juegos.codigo}}</td>
                     <td> {{juegos.nombre}}</td>
                     <td> {{juegos.stock}}</td>
                     <td> {{juegos.precio}}</td>
+                    <td> <button :style="{'background-color': juegos.color}" class="btn fw-bold" @click="vender">Vender</button></td>
                 </tr>
             </tbody>
         </table>
@@ -27,7 +28,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+
 export default {
     name: "Tabla",
     props: {
@@ -45,16 +46,6 @@ export default {
 
             return filtered
         },
-        juegosFiltrados() {
-            const juegos = this.juegosConStock
-            const filtroVuex = this.filtroCodigo
-            if(!filtroVuex) return juegos
-
-            const filtered = juegos.filter(fil => fil.codigo === filtroVuex)
-            if (!filtered) return []
-            return filtered
-        },
-        ...mapState(["filtroCodigo"])
     },
 }
 </script>
